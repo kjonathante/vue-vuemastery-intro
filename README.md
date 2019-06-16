@@ -5,3 +5,9 @@ https://www.freecodecamp.org/news/how-to-create-a-vue-js-app-using-single-file-c
 ```
 npm install vue vue-loader vue-template-compiler webpack webpack-cli webpack-dev-server babel-loader @babel/core @babel/preset-env css-loader vue-style-loader html-webpack-plugin rimraf -D
 ```
+
+### data binding
+```html
+<img v-bind:src="image" v-bind:alt="altText">
+<img :src="image" :alt="altText" > // shorthand
+```
