@@ -11,3 +11,9 @@ npm install vue vue-loader vue-template-compiler webpack webpack-cli webpack-dev
 <img v-bind:src="image" v-bind:alt="altText">
 <img :src="image" :alt="altText" > // shorthand
 ```
+
+There are Vue directives to conditionally render elements:
+v-if
+v-else-if
+v-else
+v-show
