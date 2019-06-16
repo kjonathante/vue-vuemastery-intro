@@ -17,3 +17,8 @@ v-if
 v-else-if
 v-else
 v-show
+
+### list rendering
+```html
+<li v-for="(detail,index) in details" :key="index">{{detail}}</li>
+```
