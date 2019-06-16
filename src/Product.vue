@@ -1,11 +1,15 @@
 <template>
-  <h1>{{product}}</h1>
+  <div>
+    <h1>{{product}}</h1>
+    <p>{{description}}</p>
+  </div>
 </template>
 <script>
 export default {
   data() {
     return {
-      product: "socks"
+      product: "socks",
+      description: "A pair of warm, fuzzy socks"
     };
   }
 };
