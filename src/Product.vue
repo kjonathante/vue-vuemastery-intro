@@ -5,8 +5,12 @@
     </div>
     <div class="product-info">
       <h1>{{product}}</h1>
+      <p v-if="inventory > 10">In Stock</p>
+      <p v-else-if="inventory > 0 && inventory <=10">Almost sold out!</p>
+      <p v-else>Out of Stock</p>
       <p>{{description}}</p>
       <a :href="link" target="_blank">More products like this</a>
+      <span v-show="onSale">On Sale</span>
     </div>
   </div>
 </template>
@@ -19,7 +23,9 @@ export default {
       image: "./src/vmSocks-green-onWhite.jpg",
       altText: "A pair of socks",
       link:
-        "https://www.amazon.com/s/ref=nb_sb_noss?url=search-alias%3Daps&field-keywords=socks"
+        "https://www.amazon.com/s/ref=nb_sb_noss?url=search-alias%3Daps&field-keywords=socks",
+      inventory: 50,
+      onSale: false
     };
   }
 };
