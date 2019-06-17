@@ -22,3 +22,11 @@ v-show
 ```html
 <li v-for="(detail,index) in details" :key="index">{{detail}}</li>
 ```
+
+### Event Handling
+```html
+<button @click="addToCart">Add to cart</button>
+<p @mouseover="updateProduct(variant.variantImage)">{{ variant.variantColor}}</p> // with arguments
+```
+The v-on directive is used to allow elements to listen for events
+The shorthand for v-on is @
