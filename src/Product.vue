@@ -5,6 +5,7 @@
     </div>
     <div class="product-info">
       <h1>{{title}}</h1>
+      <p>Shipping: {{shipping}}</p>
 
       <p v-if="inStock">In Stock</p>
       <p v-else :class="{outOfStock: !inStock}">Out of Stock</p>
@@ -21,9 +22,7 @@
         <li v-for="(detail,index) in details" :key="index">{{detail}}</li>
       </ul>
 
-      <ul>
-        <li v-for="(size,index) in sizes" :key="index">{{size}}</li>
-      </ul>
+      <ProductDetailSize :sizes="sizes"/>
 
       <div
         class="color-box"
@@ -50,7 +49,14 @@
   </div>
 </template>
 <script>
+import ProductDetailSize from "./ProductDetailSize.vue"
 export default {
+  props: {
+    premium: {
+      type: Boolean,
+      required: true
+    }
+  },
   data() {
     return {
       product: "Socks",
@@ -104,7 +110,13 @@ export default {
     },
     inStock() {
       return this.variants[this.selectedVariant].variantQuantity
+    },
+    shipping() {
+      return this.premium ? "Free Shipping" : "2.99"
     }
+  },
+  components: {
+    ProductDetailSize
   }
 };
 </script>

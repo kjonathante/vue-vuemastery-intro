@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     {{ message }}
-    <Product />
+    <Product :premium="premium" />
   </div>
 </template>
 
@@ -12,7 +12,8 @@ import Product from "./Product.vue"
 export default {
   data() {
     return {
-      message: "Hello World"
+      message: "Hello World",
+      premium: false
     };
   },
   components: { Product }
