@@ -42,9 +42,6 @@
       
       <button @click="removeFromCart">Remove from cart</button>
       
-      <div class="cart">
-        <p>Cart({{cart}})</p>
-      </div>
     </div>
   </div>
 </template>
@@ -79,7 +76,6 @@ export default {
           variantQuantity: 0
         }
       ],
-      cart: 0,
       description: "A pair of warm, fuzzy socks",
       altText: "A pair of socks",
       link:
@@ -91,7 +87,7 @@ export default {
   },
   methods: {
     addToCart() {
-      this.cart += 1;
+      this.$emit("add-to-cart", this.variants[this.selectedVariant].variantId)
     },
     removeFromCart() {
       this.cart -= 1;
