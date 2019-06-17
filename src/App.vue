@@ -1,22 +1,30 @@
 <template>
   <div id="app">
-    {{ message }}
-    <Product :premium="premium" />
+    <div class="cart">
+      <p>Cart({{cart.length}})</p>
+    </div>
+    <product :premium="premium" @add-to-cart="updateCart"/>
   </div>
 </template>
 
 
 <script>
-import Product from "./Product.vue"
+import product from "./Product.vue";
 
 export default {
   data() {
     return {
-      message: "Hello World",
-      premium: false
+      premium: false,
+      cart: [],
     };
   },
-  components: { Product }
+  methods: {
+    updateCart(index) {
+      // this.cart[this.cart.length] = index; // this won't work
+      this.cart.push( index )
+    }
+  },
+  components: { product }
 };
 </script>
 
