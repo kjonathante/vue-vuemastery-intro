@@ -30,3 +30,75 @@ v-show
 ```
 The v-on directive is used to allow elements to listen for events
 The shorthand for v-on is @
+
+### style binding
+```html
+<h1 :style="{color: color}"></h1>
+
+data: {
+  color: "red"
+}
+```
+#### style bindings - objects
+```html
+<h1 :style="styleObject"></h1>
+
+data: {
+  styleObject: {
+    color: "red",
+    fontSize: "13px"
+  }
+}
+```
+#### style bindings - arrays
+```html
+<h1 :style="[styleObject, styleObject2]"></h1>
+
+data: {
+  styleObject: {
+    color: "red",
+    fontSize: "13px"
+  },
+  styleObject2: {
+    margin: "5px",
+    padding: "10px"
+  }
+}
+```
+
+### Class Bindings
+```html
+<div :class="{ active: activeClass }"></div>
+
+data: {
+  activeClass: true
+}
+```
+#### class bindings - objects
+```html
+<div :class="classObject"></div> //results to:  <div class="active"></div>
+
+data: {
+  classObjects: {
+    active: true;
+    'text-danger': false
+  }
+}
+```
+#### class bindings - arrays
+```html
+<div :class="[activeClass, errorClass]"></div> //results to:  <div class="active text-danger"></div>
+
+data: {
+  activeClass: "active",
+  errorClass: "text-danger"
+}
+```
+#### class bindings - conditionals
+```html
+<div :class="[isActive ? activeClass : '']"></div> // results to <div class="active"></div>
+data: {
+  isActive: true,
+  activeClass: "active"
+}
+```

@@ -17,10 +17,17 @@
       <ul>
         <li v-for="(size,index) in sizes" :key="index">{{size}}</li>
       </ul>
-      <div v-for="variant in variants" :key="variant.variantId">
-        <p @mouseover="updateProduct(variant.variantImage)">{{ variant.variantColor}}</p>
-      </div>
-      <button @click="addToCart">Add to cart</button>
+      <div
+        class="color-box"
+        v-for="variant in variants"
+        :key="variant.variantId"
+        :style="{backgroundColor: variant.variantColor}"
+        @mouseover="updateProduct(variant.variantImage)"
+      ></div>
+      <button 
+        @click="addToCart" 
+        :disabled="inventory < 1" 
+        :class="{disabledButton: inventory < 1}">Add to cart</button>
       <button @click="removeFromCart">Remove from cart</button>
       <div class="cart">
         <p>Cart({{cart}})</p>
@@ -38,7 +45,7 @@ export default {
       altText: "A pair of socks",
       link:
         "https://www.amazon.com/s/ref=nb_sb_noss?url=search-alias%3Daps&field-keywords=socks",
-      inventory: 50,
+      inventory: 1,
       onSale: false,
       details: ["80% cotton", "20% polyester", "Gender-neutral"],
       variants: [
@@ -64,8 +71,8 @@ export default {
     removeFromCart() {
       this.cart -= 1;
     },
-    updateProduct(location){
-      this.image=location
+    updateProduct(location) {
+      this.image = location;
     }
   }
 };
@@ -101,5 +108,13 @@ button {
   float: right;
   border: 1px solid #d8d8d8;
   padding: 5px 20px;
+}
+.color-box {
+  width: 40px;
+  height: 40px;
+  margin-top: 5px;
+}
+.disabledButton {
+  background-color: #d8d8d8;
 }
 </style>
