@@ -18,7 +18,12 @@
         <li v-for="(size,index) in sizes" :key="index">{{size}}</li>
       </ul>
       <div v-for="variant in variants" :key="variant.variantId">
-        <p>{{ variant.variantColor}}</p>
+        <p @mouseover="updateProduct(variant.variantImage)">{{ variant.variantColor}}</p>
+      </div>
+      <button @click="addToCart">Add to cart</button>
+      <button @click="removeFromCart">Remove from cart</button>
+      <div class="cart">
+        <p>Cart({{cart}})</p>
       </div>
     </div>
   </div>
@@ -39,15 +44,29 @@ export default {
       variants: [
         {
           variantId: 2234,
-          variantColor: "green"
+          variantColor: "green",
+          variantImage: "./src/vmSocks-green-onWhite.jpg"
         },
         {
           variantId: 2235,
-          variantColor: "blue"
+          variantColor: "blue",
+          variantImage: "./src/vmSocks-blue-onWhite.jpg"
         }
       ],
-      sizes: ['S', 'M', 'L', 'XL', 'XXL', 'XXXL']
+      sizes: ["S", "M", "L", "XL", "XXL", "XXXL"],
+      cart: 0
     };
+  },
+  methods: {
+    addToCart() {
+      this.cart += 1;
+    },
+    removeFromCart() {
+      this.cart -= 1;
+    },
+    updateProduct(location){
+      this.image=location
+    }
   }
 };
 </script>
@@ -67,5 +86,20 @@ img {
 .product-info {
   margin-top: 10px;
   width: 50%;
+}
+button {
+  margin-top: 30px;
+  border: none;
+  background-color: #1e95ea;
+  color: white;
+  height: 40px;
+  width: 100px;
+  font-size: 14px;
+}
+.cart {
+  margin-right: 25px;
+  float: right;
+  border: 1px solid #d8d8d8;
+  padding: 5px 20px;
 }
 </style>
