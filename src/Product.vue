@@ -43,10 +43,14 @@
       <button @click="removeFromCart">Remove from cart</button>
       
     </div>
+    <productReviews :reviews="reviews" />
+    <productReview @review-submitted="reviewAdded"/>
   </div>
 </template>
 <script>
 import ProductDetailSize from "./ProductDetailSize.vue"
+import productReview from "./product-review.vue"
+import productReviews from "./product-reviews.vue"
 export default {
   props: {
     premium: {
@@ -83,6 +87,7 @@ export default {
       inventory: 1,
       onSale: false,
       sizes: ["S", "M", "L", "XL", "XXL", "XXXL"],
+      reviews: [],
     };
   },
   methods: {
@@ -95,6 +100,10 @@ export default {
     updateProduct(index) {
       // this.image = location;
       this.selectedVariant = index
+    },
+    reviewAdded(data){
+      console.log(data)
+      this.reviews.push(data)
     }
   },
   computed: {
@@ -112,7 +121,9 @@ export default {
     }
   },
   components: {
-    ProductDetailSize
+    ProductDetailSize,
+    productReview,
+    productReviews
   }
 };
 </script>
