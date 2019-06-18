@@ -24,7 +24,9 @@ export default {
       this.cart.push( index )
     }
   },
-  components: { product }
+  components: { 
+    product
+  }
 };
 </script>
 
