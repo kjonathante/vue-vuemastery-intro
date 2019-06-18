@@ -36,6 +36,7 @@
 </template>
 
 <script>
+import eventBus from "../eventBus"
 export default {
   data() {
     return {
@@ -54,7 +55,7 @@ export default {
           review: this.review,
           rating: Number( this.rating )
         };
-        this.$emit("review-submitted", productReview);
+        eventBus.$emit("review-submitted", productReview);
         this.name = null;
         this.review = null;
         this.rating = null;
@@ -68,7 +69,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .review-form {
   width: 400px;
   padding: 20px;
