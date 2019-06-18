@@ -13,11 +13,11 @@
 </template>
 
 <script>
-import { type } from 'os';
 export default {
   props : {
     reviews: {
-      type: Array
+      type: Array,
+      required: true
     }
   }
 };
